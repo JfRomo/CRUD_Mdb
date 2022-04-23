@@ -1,14 +1,12 @@
 import express from "express";
 import indexRoutes from "./routes/index.routes";
-import exphbs from "express-handlebars";
+import { engine } from "express-handlebars";
 import path from "path";
 
 const app = express();
 
 app.set("views", path.join(__dirname, "views"));
-app.engine(
-  ".hbs",
-  exphbs({
+app.engine(".hbs", engine({
     layoutDir: path.join(app.get("views"), "layouts"),
     defaultLayout: "main",
     extname: ".hbs",
