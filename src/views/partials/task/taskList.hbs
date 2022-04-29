@@ -15,9 +15,13 @@
         <td>{{title}}</td>
         <td>{{description}}</td>
         <td>
-            <button>Hecho</button>
-            <button>Editar</button>
-            <button>Eliminar</button>
+          {{#if done}}
+            <button id="done-btn"><a href="/toggleDone/{{_id}}">Pendiente</a></button>
+          {{else}}
+            <button id="done-btn"><a href="/toggleDone/{{_id}}">Hecho</a></button>
+          {{/if}}
+            <button><a href="/edit/{{_id}}">Editar</a></button>
+            <button><a href="/delete/{{_id}}">Eliminar</a></button>
         </td>
       </tr>
     {{/each}}
