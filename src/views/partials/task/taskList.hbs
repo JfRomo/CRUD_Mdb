@@ -1,4 +1,5 @@
-<table>
+{{#if tasks}}
+  <table class="table table-bordered table-hover table-dark">
   <thead>
     <tr>
       <th>No.</th>
@@ -11,19 +12,24 @@
   <tbody>
     {{#each tasks}}
       <tr>
-        <td> {{@index}} </td>
+        <td>{{@index}}</td>
         <td>{{title}}</td>
         <td>{{description}}</td>
         <td>
           {{#if done}}
-            <button id="done-btn"><a href="/toggleDone/{{_id}}">Pendiente</a></button>
+            <button onclick="location.href='/tasks/{{_id}}/toggleDone'" class="btn btn-warning" type="button">Pendiente</button>
           {{else}}
-            <button id="done-btn"><a href="/toggleDone/{{_id}}">Hecho</a></button>
+            <button onclick="location.href='/tasks/{{_id}}/toggleDone'" class="btn btn-success" type="button">Hecho</button>
           {{/if}}
-            <button><a href="/edit/{{_id}}">Editar</a></button>
-            <button><a href="/delete/{{_id}}">Eliminar</a></button>
+            <button onclick="location.href='/tasks/{{_id}}/edit'" class="btn btn-secondary" type="button">Editar</button>
+            <button onclick="location.href='/tasks/{{_id}}/delete'" class="btn btn-danger" type="button">Eliminar</button>
         </td>
       </tr>
     {{/each}}
   </tbody>
 </table>
+  {{else}}
+          <div class="text-center text-white bg-dark">
+            <h1>No se encontraron tareas</h1>
+          </div>
+{{/if}}

@@ -1,7 +1,7 @@
 import app from "./app";
 import './database'
-const port = 3000;
+import { PORT } from "./config";
 
-app.listen(port);
+app.listen(PORT);
 
-console.log("Escuchanding en el puerto " + port);
+console.log("Escuchanding en el puerto ", PORT);
